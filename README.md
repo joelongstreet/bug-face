@@ -1,0 +1,1 @@
+This is a project to help me utilize the raspberry pi. Github should call a running web server whenever a new bug is filed for a specified repository. On call of the web server (a raspberry pi), the GPIO pins will be activated and trigger a notification from a mannequin head.

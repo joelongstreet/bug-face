@@ -1,0 +1,18 @@
+{
+  "name": "bug-face",
+  "version": "0.0.0",
+  "description": "get notified of new github bugs via a terrifying mannequin head",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": "",
+  "keywords": [
+    "mannequin",
+    "github",
+    "bugs"
+  ],
+  "author": "Joe Longstreet",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
