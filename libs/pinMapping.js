@@ -1,36 +1,36 @@
 exports.pins = [
   {
-    pinId : 4,
+    id    : 4,
     type  : 'head',
     name  : 'greenHead'
   },
   {
-    pinId : 17,
+    id    : 17,
     type  : 'head',
     name  : 'yellowHead'
   },
   {
-    pinId : 23,
+    id    : 23,
     type  : 'head',
     name  : 'redHead'
   },
   {
-    pinId : 24,
+    id    : 24,
     type  : 'head',
     name  : 'blueHead'
   },
   {
-    pinId : 25,
+    id    : 25,
     type  : 'head',
     name  : 'orangeHead'
   },
   {
-    pinId : 22,
+    id    : 22,
     type  : 'eye',
     name  : 'leftEye'
   },
   {
-    pinId : 18,
+    id    : 18,
     type  : 'eye',
     name  : 'rightEye'
   }
