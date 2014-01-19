@@ -14,5 +14,8 @@
   ],
   "author": "Joe Longstreet",
   "license": "BSD",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "gpio": "~0.2.5"
+  }
 }
