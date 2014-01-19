@@ -22,6 +22,7 @@ pinMappings.pins.forEach(function(pin){
   pins[pin.name] = {
     id      : pin.id,
     type    : pin.type,
+    gpio    : gpioPin,
     turnOn  : function(){
       gpioPin.set(0);
     },
