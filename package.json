@@ -16,6 +16,7 @@
   "license": "BSD",
   "readmeFilename": "README.md",
   "dependencies": {
-    "gpio": "~0.2.5"
+    "gpio": "~0.2.5",
+    "say": "~0.5.0"
   }
 }
