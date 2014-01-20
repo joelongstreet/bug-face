@@ -10,12 +10,20 @@ initialize.ready(function(pins){
     }
 
     procedures.setPins(pins);
-    procedures.blinkEyes(1000, 3, function(){
-      console.log('all done');
-    });
-
-    procedures.pyramid(1000, 5, function(){
-      console.log('all done');
+    procedures.blinkEyes(500, 3, function(){
+      procedures.pyramid(500, 5, function(){
+        procedures.xHead(500, 5, function(){
+          procedures.leftCircle(500, 1, function(){
+            procedures.rightCircle(500, 1, function(){
+              procedures.eyeJitter(200, 5, function(){
+                procedures.blinkAll(500, 3, function(){
+                  console.log('all done');
+                });
+              });
+            });
+          });
+        });
+      });
     });
   }, 2000);
 });
