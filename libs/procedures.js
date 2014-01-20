@@ -6,7 +6,7 @@ exports.setPins = function(pinSet){
 
 exports.leftCircle = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     pins.orangeHead.turnOn();
     setTimeout(function(){
       pins.greenHead.turnOn();
@@ -37,19 +37,22 @@ exports.leftCircle = function(speed, times, done){
       pins.orangeHead.turnOff();
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         if(done) done();
       }
     }, speed*(9/10));
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.rightCircle = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     pins.yellowHead.turnOn();
     setTimeout(function(){
       pins.blueHead.turnOn();
@@ -80,19 +83,22 @@ exports.rightCircle = function(speed, times, done){
       pins.yellowHead.turnOff();
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         if(done) done();
       }
     }, speed*(9/10));
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.pyramid = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     pins.orangeHead.turnOn();
     pins.yellowHead.turnOn();
 
@@ -119,19 +125,22 @@ exports.pyramid = function(speed, times, done){
       pins.yellowHead.turnOff();
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         if(done) done();
       }
     }, speed*(5/6));
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.eyeJitter = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     pins.leftEye.turnOn();
     pins.rightEye.turnOff();
 
@@ -140,7 +149,7 @@ exports.eyeJitter = function(speed, times, done){
       pins.rightEye.turnOn();
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         setTimeout(function(){
           pins.rightEye.turnOff();
           if(done) done();
@@ -149,13 +158,16 @@ exports.eyeJitter = function(speed, times, done){
     }, speed/2);
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.blinkEyes = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     pins.leftEye.turnOn();
     pins.rightEye.turnOn();
 
@@ -164,19 +176,22 @@ exports.blinkEyes = function(speed, times, done){
       pins.rightEye.turnOff();
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         if(done) done();
       }
     }, speed/2);
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.blinkAll = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+  var todo = function(){
     for(var key in pins){
       pins[key].turnOn();
     }
@@ -187,19 +202,25 @@ exports.blinkAll = function(speed, times, done){
       }
 
       if(iterations >= times){
-        clearInterval(timesDone);
+        clearInterval(interval);
         if(done) done();
       }
     }, speed/2);
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
 
 
 exports.xHead = function(speed, times, done){
   var iterations = 0;
-  var timesDone = setInterval(function(){
+
+  var todo = function(){
+    pins.greenHead.turnOff();
+    pins.yellowHead.turnOff();
     pins.orangeHead.turnOn();
     pins.blueHead.turnOn();
 
@@ -208,23 +229,20 @@ exports.xHead = function(speed, times, done){
       pins.blueHead.turnOff();
       pins.greenHead.turnOn();
       pins.yellowHead.turnOn();
-    }, speed*(1/4));
-
-    setTimeout(function(){
-      pins.greenHead.turnOff();
-      pins.yellowHead.turnOff();
-      pins.redHead.turnOn();
-    }, speed*(2/4));
-
-    setTimeout(function(){
-      pins.redHead.turnOff();
 
       if(iterations >= times){
-        clearInterval(timesDone);
-        if(done) done();
+        clearInterval(interval);
+        setTimeout(function(){
+          pins.greenHead.turnOff();
+          pins.yellowHead.turnOff();
+          if(done) done();
+        }, speed/2);
       }
-    }, speed*(3/4));
+    }, speed/2);
 
     iterations++;
-  }, speed);
+  };
+
+  var interval = setInterval(todo, speed);
+  todo();
 };
