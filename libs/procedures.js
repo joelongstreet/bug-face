@@ -218,6 +218,13 @@ exports.xHead = function(speed, times, done){
 
     setTimeout(function(){
       pins.redHead.turnOff();
+
+      if(iterations >= times){
+        clearInterval(timesDone);
+        if(done) done();
+      }
     }, speed*(3/4));
+
+    iterations++;
   }, speed);
 };
