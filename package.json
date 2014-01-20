@@ -18,6 +18,7 @@
   "dependencies": {
     "gpio": "~0.2.5",
     "say": "~0.5.0",
-    "request": "~2.33.0"
+    "request": "~2.33.0",
+    "localtunnel": "~0.2.2"
   }
 }

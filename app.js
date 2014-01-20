@@ -1,6 +1,4 @@
 var say         = require('say');
-var http        = require('http');
-var request     = require('request');
 var initialize  = require('./libs/initializePins');
 var procedures  = require('./libs/procedures');
 var phrases     = require('./libs/phrases').phrases;
@@ -38,43 +36,17 @@ var goCrazzzy = function(){
 };
 
 
-
-// var server = http.createServer(function(req, res){
-//   console.log('request made -----')
-//   console.log(req.url);
-//   if(req.url == '/bug'){
-//     console.log(req);
-//   }
-//   console.log('------------')
-
-//   res.writeHead(200, {'Content-Type': 'text/plain'});
-//   res.end();
-// }).listen(3000);
-
-
 // Keep alive, warn
 setInterval(warn, 3600000);
 
-var gith = require('gith').create(3000);
-gith({
-  repo: 'joelongstreet/bug-face'
-}).on('all', function(payload){
-  console.log(payload)
+
+initialize.ready(function(pinMappings){
+  var i = 0;
+  pins = pinMappings;
+
+  setTimeout(function(){
+    for(var key in pins){
+      pins[key].turnOff();
+    }
+  }, 2000);
 });
-
-// initialize.ready(function(pinMappings){
-//   var i = 0;
-//   pins = pinMappings;
-
-//   setTimeout(function(){
-//     for(var key in pins){
-//       pins[key].turnOff();
-//     }
-//     /*
-//     setTimeout(function(){
-//       warn();
-//     }, 1000);
-//     */
-//     goCrazzzy();
-//   }, 2000);
-// });

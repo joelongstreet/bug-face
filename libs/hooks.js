@@ -1,4 +1,10 @@
 var request = require('request');
+var localtunnel = require('localtunnel');
+var tunnel = localtunnel.connect({
+  host : 'http://localtunnel.me',
+  port : 3000
+});
+
 
 var webhookURL = ['https://',
   process.env.GITHUB_USERNAME,
@@ -8,7 +14,7 @@ var webhookURL = ['https://',
 ].join('');
 
 
-exports.getAll = function(next){
+var getAll = function(next){
   request({
     url     : webhookURL,
     headers : { 'User-Agent' : 'raspberry-pi' },
@@ -19,7 +25,7 @@ exports.getAll = function(next){
 };
 
 
-exports.deleteSome = function(hooks, next){
+var deleteSome = function(hooks, next){
   var hooksDeleted = 0;
 
   hooks.forEach(function(hook){
@@ -37,7 +43,7 @@ exports.deleteSome = function(hooks, next){
 };
 
 
-exports.create = function(opts, next){
+var create = function(opts, next){
   var newHook = {
     'name'    : 'web',
     'active'  : true,
@@ -53,5 +59,31 @@ exports.create = function(opts, next){
     headers : { 'User-Agent': 'raspberry-pi' }
   }, function(err, res, body){
     if(next) next(err, JSON.parse(body));
+  });
+};
+
+
+// Delete all existing hooks when starting application
+// and create a new one matching the tunnel URL
+exports.initialize = function(){
+  tunnel.on('url', function(url){
+    console.log('hosting at: ', url);
+
+    getAll(function(currentHooks){
+      deleteSome(currentHooks);
+      create({
+        url : url + '/bugs'
+      }, function(err, res){
+        if(err) console.log(err);
+        else{
+          console.log('Succesfully created hook');
+          console.log(res);
+        }
+      });
+    });
+  });
+
+  tunnel.on('error', function(err){
+    console.log('Could not create tunnel ', err);
   });
 };
