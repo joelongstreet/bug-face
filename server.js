@@ -8,6 +8,7 @@ setInterval(mannequin.warn, 900000);
 
 
 var payloadActionRouter = function(payload){
+  console.log(payload);
   if(payload.action == 'reopened'){
     var reopenPhrase = ['Issue number ', payload.issue.number,
       'is reopened, ', payload.issue.title].join('');

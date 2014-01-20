@@ -1,20 +1,16 @@
 var say         = require('say');
-var initialize  = require('./initializePins');
+var gpioPins    = require('./gpioPins');
 var procedures  = require('./procedures');
 var phrases     = require('./phrases');
-var pins        = {};
+var pins        = gpioPins.pins;
 
+procedures.setPins(pins);
 
 var warn = function(){
-  pins.leftEye.turnOn();
-  pins.rightEye.turnOn();
-
-  say.speak('default', phrases.randomNegative());
-
-  setTimeout(function(){
-    pins.leftEye.turnOff();
-    pins.rightEye.turnOff();
-  }, 8000);
+  openEyes();
+  mannequinSay(phrases.randomNegative, function(){
+    closeEyes();
+  });
 };
 
 
@@ -34,6 +30,18 @@ var goBezerk = function(done){
 };
 
 
+var openEyes = function(){
+  pins.leftEye.turnOn();
+  pins.rightEye.turnOn();
+};
+
+
+var closeEyes = function(){
+  pins.leftEye.turnOff();
+  pins.rightEye.turnOff();
+};
+
+
 var mannequinSay = function(phrase, done){
   say.speak('Alex', phrase, function(){
     if(done) done();
@@ -41,21 +49,8 @@ var mannequinSay = function(phrase, done){
 };
 
 
-initialize.ready(function(pinMappings){
-  var i = 0;
-  pins = pinMappings;
-  procedures.setPins(pins);
-
-  setTimeout(function(){
-    for(var key in pins){
-      pins[key].turnOff();
-    }
-  }, 2000);
-
-  console.log('GPIO pins ready for action');
-});
-
-
+exports.openEyes = openEyes;
+exports.closeEyes = closeEyes;
 exports.say = mannequinSay;
 exports.goBezerk = goBezerk;
 exports.warn = warn;

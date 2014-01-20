@@ -1,22 +1,26 @@
 var gpio = require('gpio');
-var pinMappings = require('./pinMapping');
-
+var pinMappings = require('./gpioMapping');
 
 var pins = {};
 var pinsReady = 0;
-
-var ready = function(next){
-  if(next) next(pins);
-};
 
 pinMappings.pins.forEach(function(pin){
 
   var gpioPin = gpio.export(pin.id, {
     direction : 'out',
-    interval: 50,
-    ready : function(){
+    interval  : 50,
+    ready     : function(){
       pinsReady++;
-      if(pinsReady == pinMappings.pins.length) ready();
+
+      // When ready, turn all pins off
+      if(pinsReady == pinMappings.pins.length){
+        console.log('GPIO pins ready for action');
+        setTimeout(function(){
+          for(var key in pins){
+            pins[key].turnOff();
+          }
+        }, 2000);
+      }
     }
   });
 
@@ -33,4 +37,4 @@ pinMappings.pins.forEach(function(pin){
   };
 });
 
-exports.ready = ready;
+exports.pins = pins;
