@@ -9,7 +9,7 @@ webhooks.initialize();
 setInterval(function(){
   mannuequin.openEyes();
   say.speak(voice, phrases.randomNegative, function(){
-    closeEyes();
+    mannuequin.closeEyes();
   });
 }, 900000);
 
