@@ -13,5 +13,9 @@ initialize.ready(function(pins){
     procedures.blinkEyes(1000, 3, function(){
       console.log('all done');
     });
+
+    procedures.pyramid(1000, 5, function(){
+      console.log('all done');
+    });
   }, 2000);
 });
