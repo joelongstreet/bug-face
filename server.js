@@ -1,23 +1,34 @@
 var http = require('http');
+var phrases = require('./libs/phrases');
 var hooks = require('./libs/hooks');
+var mannequin = require('./libs/mannequin');
+
 hooks.initialize();
+setInterval(mannequin.warn, 900000);
 
 
 var payloadActionRouter = function(payload){
-  console.log(payload);
+  if(payload.action == 'reopened'){
+    var reopenPhrase = ['Issue number ', payload.issue.number,
+      'is reopened, ', payload.issue.title].join('');
 
-  switch(payload.action){
-    case 'reopened':
-      // mannequin.talk('negative');
-      break;
-    case 'closed':
-      // mannequin.talk('positive');
-      break;
-    case 'created':
-      // mannequin.goBezerk(function(){
-      //   mannequin.say('L O L, new bug. ' + payload.issue.title);
-      // });
-      break;
+    mannequin.say(reopenPhrase, function(){
+      mannequin.say(phrases.randomNegative());
+    });
+  } else if(payload.action == 'closed'){
+    var closedPhrase = ['Issue number ', payload.issue.number,
+      'is now closed, ', payload.issue.title].join('');
+
+    mannequin.say(closedPhrase, function(){
+      mannequin.say(phrases.randomPositive());
+    });
+  } else if(payload.action == 'opened'){
+    mannequin.say('L O L, L O L, L O L, L O L, L O L, L O L');
+    mannequin.goBezerk(function(){
+      mannequin.say('New bug. ' + payload.issue.title, function(){
+        mannequin.say(phrases.randomNegative());
+      });
+    });
   }
 };
 
