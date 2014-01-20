@@ -1,11 +1,11 @@
 var http = require('http');
 var phrases = require('./libs/phrases');
-var hooks = require('./libs/hooks');
+var webhooks = require('./libs/githubHooks');
 var say = require('say');
 var mannequin = require('./libs/mannequin');
 var voice = 'Alex';
 
-hooks.initialize();
+webhooks.initialize();
 
 
 // Remind me every 15 minutes that I suck
