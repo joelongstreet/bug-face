@@ -4,6 +4,7 @@ var pinMappings = require('./gpioMapping');
 var pins = {};
 var pinsReady = 0;
 
+
 pinMappings.pins.forEach(function(pin){
 
   var gpioPin = gpio.export(pin.id, {

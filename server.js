@@ -1,10 +1,20 @@
 var http = require('http');
 var phrases = require('./libs/phrases');
 var hooks = require('./libs/hooks');
+var say = require('say');
 var mannequin = require('./libs/mannequin');
+var voice = 'Alex';
 
 hooks.initialize();
-setInterval(mannequin.warn, 900000);
+
+
+// Remind me every 15 minutes that I suck
+setInterval(function(){
+  mannuequin.openEyes();
+  say.speak(voice, phrases.randomNegative, function(){
+    closeEyes();
+  });
+}, 900000);
 
 
 var payloadActionRouter = function(payload){
@@ -13,21 +23,24 @@ var payloadActionRouter = function(payload){
     var reopenPhrase = ['Issue number ', payload.issue.number,
       'is reopened, ', payload.issue.title].join('');
 
-    mannequin.say(reopenPhrase, function(){
-      mannequin.say(phrases.randomNegative());
+    mannequin.eyeJitter(300, 10);
+    mannequin.pyramid(1500, 3);
+    say.speak(voice, reopenPhrase, function(){
+      say.speak(voice, phrases.randomNegative());
     });
   } else if(payload.action == 'closed'){
     var closedPhrase = ['Issue number ', payload.issue.number,
       'is now closed, ', payload.issue.title].join('');
 
-    mannequin.say(closedPhrase, function(){
-      mannequin.say(phrases.randomPositive());
+    mannequin.xHead(800, 5);
+    say.speak(voice, closedPhrase, function(){
+      say.speak(voice, phrases.randomPositive());
     });
   } else if(payload.action == 'opened'){
-    mannequin.say('L O L, L O L, L O L, L O L, L O L, L O L');
+    say.speak('L O L, L O L, L O L, L O L, L O L, L O L');
     mannequin.goBezerk(function(){
-      mannequin.say('New bug. ' + payload.issue.title, function(){
-        mannequin.say(phrases.randomNegative());
+      say.speak(voice, 'New bug. ' + payload.issue.title, function(){
+        say.speak(voice, phrases.randomNegative());
       });
     });
   }
