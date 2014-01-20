@@ -13,6 +13,7 @@ pinMappings.pins.forEach(function(pin){
 
   var gpioPin = gpio.export(pin.id, {
     direction : 'out',
+    interval: 50,
     ready : function(){
       pinsReady++;
       if(pinsReady == pinMappings.pins.length) ready();
