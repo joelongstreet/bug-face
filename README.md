@@ -1,14 +1,6 @@
-# Todo
-x install a new theme for sublime
-x change ssh name
-x change ssh username and password
-* make ssh work on wifi
-* set up a permanent ip address for pinging from github
-* ensure that I can SSH into the raspberry pi via ethernet cord and no working wifi so i can then set up wifi
-* gather sounds
-* hook up sounds
-* get it to read the bug aloud
-* hook up fan
-* Get github webservice working
+If you take bugs in your software personal (like I do), then this project should help get you really angry.
 
-This is a project to help me utilize the raspberry pi. Github should call a running web server whenever a new bug is filed for a specified repository. On call of the web server (a raspberry pi), the GPIO pins will be activated and trigger a notification from a mannequin head.
+Whenever a new github issue is created/updated on a designated repo, a terrifying mannequin head will startle you, read you the title of the issue, and finally leave you with a clever demoralizing (or occasionally uplifiting) phrase.
+
+## Warning
+If you strangely decide you'd like to implement this monstrosity for your own project, there's something you need to know about the web hooks. Since I couldn't figure out how to assign a web accessible static IP address to the raspberry pi, I used localtunnel to generate public urls for the application. Everytime the application starts, it clears out *ALL* current github webhooks. This little convenience could ruin your life if you have a fancy project set up.
