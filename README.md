@@ -2,11 +2,11 @@ If you take bugs in your software personal (like I do), then this project should
 
 Whenever a new github issue is created/updated on a designated repo, a terrifying mannequin head will startle you, read you the title of the issue, and finally leave you with a clever demoralizing (or occasionally uplifiting) phrase.
 
-![Mannequin](https://raw.github.com/joelongstreet/bug-face/master/img/1.jpg)
-![Mannequin](https://raw.github.com/joelongstreet/bug-face/master/img/2.jpg)
-![Mannequin](https://raw.github.com/joelongstreet/bug-face/master/img/3.jpg)
-![Mannequin](https://raw.github.com/joelongstreet/bug-face/master/img/4.jpg)
-![Mannequin](https://raw.github.com/joelongstreet/bug-face/master/img/5.jpg)
+![Mannequin](https://raw2.github.com/joelongstreet/bug-face/master/img/1.jpg)
+![Mannequin](https://raw2.github.com/joelongstreet/bug-face/master/img/2.jpg)
+![Mannequin](https://raw2.github.com/joelongstreet/bug-face/master/img/3.jpg)
+![Mannequin](https://raw2.github.com/joelongstreet/bug-face/master/img/4.jpg)
+![Mannequin](https://raw2.github.com/joelongstreet/bug-face/master/img/5.jpg)
 
 
 ## Warning
