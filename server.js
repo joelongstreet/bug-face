@@ -2,17 +2,7 @@ var http = require('http');
 var webhooks = require('./libs/githubHooks');
 var routes = require('./libs/routes');
 
-// Setup webhook
 webhooks.initialize();
-
-// Remind me every 15 minutes that I suck
-setInterval(function(){
-  mannuequin.openEyes();
-  say.speak(voice, phrases.randomNegative, function(){
-    mannuequin.closeEyes();
-  });
-}, 900000);
-
 
 var server = http.createServer(function(req, res){
   if(req.method == 'POST'){

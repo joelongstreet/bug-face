@@ -1,7 +1,7 @@
 var say = require('say');
 var phrases = require('./phrases');
 var mannequin = require('./mannequin');
-var voice = 'Alex';
+var voice = '';
 
 
 exports.reopened = function(payload){
