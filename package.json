@@ -2,7 +2,7 @@
   "name": "bug-face",
   "version": "0.0.0",
   "description": "get notified of new github bugs via a terrifying mannequin head",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "test"
   },
