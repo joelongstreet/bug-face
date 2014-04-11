@@ -258,6 +258,16 @@ var closeEyes = function(){
 };
 
 
+var offAll = function(){
+  var pin, _i, _len;
+
+  for (_i = 0, _len = pins.length; _i < _len; _i++) {
+    pin = pins[_i];
+    pin.turnOff();
+  }
+};
+
+
 var goBezerk = function(done){
   eyeJitter(300, 18);
   pyramid(1000, 3, function(){
@@ -290,6 +300,7 @@ exports.xHead       = xHead;
 // Convenience methods to light pins
 exports.openEyes    = openEyes;
 exports.closeEyes   = closeEyes;
+exports.offAll      = offAll;
 
 // Combinations of procedures which take a callback
 exports.goBezerk    = goBezerk;
