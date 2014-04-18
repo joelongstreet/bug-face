@@ -259,11 +259,8 @@ var closeEyes = function(){
 
 
 var offAll = function(){
-  var pin, _i, _len;
-
-  for (_i = 0, _len = pins.length; _i < _len; _i++) {
-    pin = pins[_i];
-    pin.turnOff();
+  for(var key in pins){
+    pins[key].turnOff();
   }
 };
 
